@@ -1,8 +1,22 @@
 import React from "react";
-export default function Pet({ name }) {
-  //   return React.createElement("div", {}, [
-  //     React.createElement("h1", {}, props.name),
-  //     React.createElement("h1", {}, props.breed),
-  //     React.createElement("h1", {}, props.name),
-  return <h1>{name}</h1>;
-}
+import { Link } from "@reach/router";
+const Pet = (props) => {
+  let hero = "http://placecorgi.com/300/300";
+  if (props.media.length) {
+    hero = props.media[0].small;
+  }
+
+  return (
+    <Link to={`/details/${props.id}`} className="pet">
+      <div className="image-container">
+        <img src={hero} alt={name}></img>
+      </div>
+      <div className="info">
+        <h1>{name}</h1>
+        <h2>{`${props.animal} — ${props.breed} — ${props.location}`}</h2>
+      </div>
+    </Link>
+  );
+};
+
+export default Pet;
